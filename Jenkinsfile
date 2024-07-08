@@ -1,20 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Build main') {
+        stage('Deploy') {
             when {
-                branch 'main'
+                expression {
+                    return env.BRANCH_NAME == 'main' && currentBuild.result == null
+                }
             }
             steps {
-                echo 'Building on main branch'
-            }
-        }
-       stage('Build feature-branch') {
-            when {
-                branch 'feature-branch'
-            }
-            steps {
-                echo 'Building on main branch'
+                echo 'Deploying on main branch'
             }
         }
     }
