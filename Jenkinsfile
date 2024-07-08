@@ -1,15 +1,12 @@
 pipeline {
     agent any
-    environment {
-        RUN_TESTS = 'true'
-    }
     stages {
-        stage('Test') {
+        stage('Build HTML') {
             when {
-                environment name: 'RUN_TESTS', value: 'true'
+                changeset "**/*.html"
             }
             steps {
-                echo 'Running tests'
+                echo 'Building due to HTML file changes'
             }
         }
     }
