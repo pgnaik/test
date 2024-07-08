@@ -1,13 +1,18 @@
 pipeline {
     agent any
+       environment {
+        RUN_TESTS = 'true'
+    }
     stages {
-        stage('Build HTML') {
+        stage('Build and Test') {
             when {
-                changeset "**/*.html"
+                allOf {
+                    branch 'main'
+                    environment name: 'RUN_BUILD', value: 'true'
+                }
             }
             steps {
-                echo 'Building due to HTML file changes'
+                echo 'Building and testing on main branch'
             }
         }
     }
-}
