@@ -1,15 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Deploy') {
+        stage('Test') {
             when {
-                expression {
-                    return env.BRANCH_NAME == 'main' && currentBuild.result == null
-                }
+                environment name: 'RUN_TESTS', value: 'true'
             }
             steps {
-                echo 'Deploying on main branch'
+                echo 'Running tests'
             }
         }
     }
-}
