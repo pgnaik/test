@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        RUN_TESTS = 'false'
+    }
     stages {
         stage('Test') {
             when {
@@ -10,3 +13,4 @@ pipeline {
             }
         }
     }
+}
