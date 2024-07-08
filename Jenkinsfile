@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         RUN_TESTS = 'true'
-       DEPLOY = ‘false’
+       DEPLOY = 'false'
     }
     stages {
         stage('Build') {
