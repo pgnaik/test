@@ -1,7 +1,7 @@
 pipeline {
     agent any
        environment {
-        RUN_TESTS = 'true'
+        RUN_BUILD = 'true'
     }
     stages {
         stage('Build and Test') {
